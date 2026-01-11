@@ -48,34 +48,44 @@ if (Platform.OS === 'web') {
   };
 }
 
-const getInitialTheme = async (): Promise<ThemeMode> => {
-  try {
-    const saved = await storage.getItem(THEME_KEY);
-    return saved === 'dark' ? 'dark' : 'light';
-  } catch {
-    return 'light';
+const getInitialTheme = (): ThemeMode => {
+  if (Platform.OS === 'web') {
+    try {
+      const saved = storage.getItem(THEME_KEY);
+      return saved === 'dark' ? 'dark' : 'light';
+    } catch {
+      return 'light';
+    }
   }
+  return 'light';
 };
 
 export const useThemeStore = create<ThemeState>((set) => {
-  let initialMode: ThemeMode = 'light';
+  const initialMode = getInitialTheme();
+  const initialColors = initialMode === 'dark' ? darkColors : lightColors;
   
-  getInitialTheme().then((mode) => {
-    initialMode = mode;
-    set({
-      mode: initialMode,
-      colors: initialMode === 'dark' ? darkColors : lightColors,
-    });
-  });
+  if (Platform.OS !== 'web') {
+    storage.getItem(THEME_KEY).then((saved: string | null) => {
+      const mode = saved === 'dark' ? 'dark' : 'light';
+      set({
+        mode,
+        colors: mode === 'dark' ? darkColors : lightColors,
+      });
+    }).catch(() => {});
+  }
   
   return {
     mode: initialMode,
-    colors: lightColors,
+    colors: initialColors,
     
     toggleTheme: () => {
       set((state) => {
         const newMode = state.mode === 'light' ? 'dark' : 'light';
-        storage.setItem(THEME_KEY, newMode).catch(() => {});
+        if (Platform.OS === 'web') {
+          storage.setItem(THEME_KEY, newMode);
+        } else {
+          storage.setItem(THEME_KEY, newMode).catch(() => {});
+        }
         return {
           mode: newMode,
           colors: newMode === 'dark' ? darkColors : lightColors,
@@ -84,7 +94,11 @@ export const useThemeStore = create<ThemeState>((set) => {
     },
     
     setTheme: (mode: ThemeMode) => {
-      storage.setItem(THEME_KEY, mode).catch(() => {});
+      if (Platform.OS === 'web') {
+        storage.setItem(THEME_KEY, mode);
+      } else {
+        storage.setItem(THEME_KEY, mode).catch(() => {});
+      }
       set({
         mode,
         colors: mode === 'dark' ? darkColors : lightColors,

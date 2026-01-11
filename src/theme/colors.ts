@@ -1,54 +1,54 @@
 export const lightColors = {
-  primary: '#FF6B35', // Vibrant coral-orange
-  primaryDark: '#E8552A',
-  primaryLight: '#FF8A5C',
+  primary: '#6366F1', // Modern indigo
+  primaryDark: '#4F46E5',
+  primaryLight: '#818CF8',
   
-  background: '#FAFAFA',
-  surface: '#FFFFFF',
-  card: '#F5F5F5',
+  background: '#FFFFFF',
+  surface: '#F8FAFC',
+  card: '#FFFFFF',
   
-  text: '#1A1A1A',
-  textSecondary: '#6B6B6B',
-  textTertiary: '#9A9A9A',
+  text: '#0F172A',
+  textSecondary: '#64748B',
+  textTertiary: '#94A3B8',
   
-  border: '#E8E8E8',
-  divider: '#E0E0E0',
+  border: '#E2E8F0',
+  divider: '#E2E8F0',
   
-  error: '#E74C3C',
-  success: '#27AE60',
+  error: '#EF4444',
+  success: '#10B981',
   
-  tabBarActive: '#FF6B35',
-  tabBarInactive: '#A0A0A0',
+  tabBarActive: '#6366F1',
+  tabBarInactive: '#94A3B8',
   
-  playButton: '#FF6B35',
+  playButton: '#6366F1',
   playButtonText: '#FFFFFF',
   
   shadow: '#000000',
 };
 
 export const darkColors = {
-  primary: '#FF6B35', // Vibrant coral-orange (consistent with light mode)
-  primaryDark: '#E8552A',
-  primaryLight: '#FF8A5C',
+  primary: '#818CF8', // Lighter indigo for dark mode
+  primaryDark: '#6366F1',
+  primaryLight: '#A5B4FC',
   
-  background: '#0A0A0A',
-  surface: '#1A1A1A',
-  card: '#252525',
+  background: '#0F172A',
+  surface: '#1E293B',
+  card: '#334155',
   
-  text: '#F5F5F5',
-  textSecondary: '#B8B8B8',
-  textTertiary: '#808080',
+  text: '#F1F5F9',
+  textSecondary: '#CBD5E1',
+  textTertiary: '#94A3B8',
   
-  border: '#2A2A2A',
-  divider: '#333333',
+  border: '#334155',
+  divider: '#475569',
   
-  error: '#FF5555',
-  success: '#4CAF50',
+  error: '#F87171',
+  success: '#34D399',
   
-  tabBarActive: '#FF6B35',
-  tabBarInactive: '#707070',
+  tabBarActive: '#818CF8',
+  tabBarInactive: '#64748B',
   
-  playButton: '#FF6B35',
+  playButton: '#818CF8',
   playButtonText: '#FFFFFF',
   
   shadow: '#000000',
